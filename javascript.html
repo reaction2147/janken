@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+
+//Variables 
+let playerSelection 
+let computerSelection 
+let playerscore = 0;
+let computerScore = 0;
+
+//Computer randomly selects rock, paper.
+
+const options=['rock', 'paper', 'scissors'];
+
+
+function computerSelFunc() {
+let randomNumber = Math.floor(Math.random() * options.length); 
+if (randomNumber === 1) {
+return 'rock' }
+else if (randomNumber === 2) {
+    return 'scissors'}
+    else  {
+        return 'paper';
+    }
+}
+
+//Player inputs rock, paper, scissors
+
+
+    let userPrompt = window.prompt('Choose rock, paper or scissors');
+    playerSelection = userPrompt;
+
+
+//Play a round 
+
+function playRound(playerSelection, computerSelection) {
+
+// Change to lower case
+
+let player = playerSelection;
+let computer = computerSelection.toLowerCase();
+
+//If player chooses rock
+
+if (player ==='rock') {
+    if(computer === 'rock') {
+        return 'It\'s a tie';
+    } else if (computer === 'scissors') {
+        return 'You win, congratulations';
+    } else {
+        return 'You lose, better luck next time';
+    }
+}
+
+//If player chooses scissors
+
+if (player === 'scissors') {
+    if (computer === 'scissors') {
+        return 'It\'s a tie';
+    }else if (computer === 'rock') {
+        return 'You lose, better luck next time';
+    } else {
+        return 'You win, congratulations';
+    }
+}
+
+//If player chooses paper
+
+if (player === 'paper') {
+    if (computer === 'paper') {
+        return 'It\'s a tie';
+    }else if (computer === 'rock') {
+        return 'You win, congratulations';
+    } else {
+        return 'You lose, better luck next time';
+    }
+}
+}
+computerSelection = computerSelFunc();
+console.log('Computer chose: ' + computerSelection);
+console.log('Player chose:  ' + playerSelection);
+console.log(playRound(playerSelection, computerSelection));
+
+//Play 5 rounds and keep score 
+
+function game() {
+    
+}
+
+    </script>
+    
+</body>
+</html>
