@@ -13,8 +13,8 @@
 //Variables 
 let playerSelection 
 let computerSelection 
-let playerscore = 0;
-let computerScore = 0;
+let playerscore = parseInt(0);
+let computerScore = parseInt(0);
 
 //Computer randomly selects rock, paper.
 
@@ -34,9 +34,14 @@ else if (randomNumber === 2) {
 
 //Player inputs rock, paper, scissors
 
-
+function userSelec() {
     let userPrompt = window.prompt('Choose rock, paper or scissors');
     playerSelection = userPrompt;
+    if (playerSelection ===null) {
+        return 'Please enter a valid choice';
+    }
+    
+}
 
 
 //Play a round 
@@ -46,7 +51,7 @@ function playRound(playerSelection, computerSelection) {
 // Change to lower case
 
 let player = playerSelection;
-let computer = computerSelection.toLowerCase();
+let computer = computerSelection;
 
 //If player chooses rock
 
@@ -54,8 +59,11 @@ if (player ==='rock') {
     if(computer === 'rock') {
         return 'It\'s a tie';
     } else if (computer === 'scissors') {
+        playerscore++;
         return 'You win, congratulations';
-    } else {
+    } 
+    else {
+        computerScore++;
         return 'You lose, better luck next time';
     }
 }
@@ -66,8 +74,11 @@ if (player === 'scissors') {
     if (computer === 'scissors') {
         return 'It\'s a tie';
     }else if (computer === 'rock') {
+        computerScore++;
         return 'You lose, better luck next time';
-    } else {
+    } 
+    else {
+        playerscore++;
         return 'You win, congratulations';
     }
 }
@@ -78,22 +89,29 @@ if (player === 'paper') {
     if (computer === 'paper') {
         return 'It\'s a tie';
     }else if (computer === 'rock') {
+        playerscore++;
         return 'You win, congratulations';
-    } else {
+    } 
+    else {
+        computerScore++;
         return 'You lose, better luck next time';
     }
 }
 }
+
+for (let i=0; i<5; i++) {
 computerSelection = computerSelFunc();
+userSelec();
 console.log('Computer chose: ' + computerSelection);
 console.log('Player chose:  ' + playerSelection);
 console.log(playRound(playerSelection, computerSelection));
+console.log('your score: ' + playerscore);
+console.log('Computer score: ' + computerScore);
+}
 
 //Play 5 rounds and keep score 
 
-function game() {
-    
-}
+
 
     </script>
     
