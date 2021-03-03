@@ -7,111 +7,121 @@
     <title>Document</title>
 </head>
 <body>
+    <div id="container">
+        <button id="rock" name="rock">Rock</button>
+        <button id="paper">Paper</button>
+        <button id="scissors">Scissors</button>
+    
+    <div id='results'>
+    </div>
+    </div>
     <script>
 
-
-//Variables 
-let playerSelection 
-let computerSelection 
-let playerscore = parseInt(0);
-let computerScore = parseInt(0);
-
-//Computer randomly selects rock, paper.
-
-const options=['rock', 'paper', 'scissors'];
+let playerScore = 0;
+let computerScore = 0;
 
 
-function computerSelFunc() {
+const buttons = document.querySelectorAll('button');
+buttons.forEach((button) => {
+button.addEventListener('click', (e) => {
+
+    
+
+    function game() {
+        let playerSelection = button.id;
+        let computerSelection = computerPlay();
+        
+
+      //Computer randomly selects rock, paper.
+
+      function computerPlay() {
+    const options=['rock', 'paper', 'scissors'];
 let randomNumber = Math.floor(Math.random() * options.length); 
 if (randomNumber === 1) {
 return 'rock' }
 else if (randomNumber === 2) {
     return 'scissors'}
     else  {
-        return 'paper';
+        return'paper';
     }
 }
-
-//Player inputs rock, paper, scissors
-
-function userSelec() {
-    let userPrompt = window.prompt('Choose rock, paper or scissors');
-    playerSelection = userPrompt;
-    if (playerSelection ===null) {
-        return 'Please enter a valid choice';
-    }
-    
-}
-
+return playRound(playerSelection, computerSelection);
 
 //Play a round 
 
-function playRound(playerSelection, computerSelection) {
-
-// Change to lower case
-
-let player = playerSelection;
-let computer = computerSelection;
+function playRound() {
+    
+console.log('Computer chose: ' + computerSelection);
+console.log('Player chose:  ' + playerSelection);
 
 //If player chooses rock
 
-if (player ==='rock') {
-    if(computer === 'rock') {
-        return 'It\'s a tie';
-    } else if (computer === 'scissors') {
-        playerscore++;
-        return 'You win, congratulations';
+if (playerSelection ==='rock') {
+    if(computerSelection === 'rock') {
+        console.log('It\'s a tie');
+    } else if (computerSelection === 'scissors') {
+        playerScore++;
+        console.log('You win, congratulations');
     } 
     else {
         computerScore++;
-        return 'You lose, better luck next time';
+        console.log('You lose, better luck next time');
     }
 }
 
 //If player chooses scissors
 
-if (player === 'scissors') {
-    if (computer === 'scissors') {
-        return 'It\'s a tie';
-    }else if (computer === 'rock') {
+if (playerSelection === 'scissors') {
+    if (computerSelection === 'scissors') {
+        console.log('It\'s a tie');
+    }else if (computerSelection === 'rock') {
         computerScore++;
-        return 'You lose, better luck next time';
+        console.log('You lose, better luck next time');
     } 
     else {
-        playerscore++;
-        return 'You win, congratulations';
+        playerScore++;
+        console.log('You win, congratulations');
     }
 }
 
 //If player chooses paper
 
-if (player === 'paper') {
-    if (computer === 'paper') {
-        return 'It\'s a tie';
-    }else if (computer === 'rock') {
-        playerscore++;
-        return 'You win, congratulations';
+if (playerSelection === 'paper') {
+    if (computerSelection === 'paper') {
+        console.log('It\'s a tie');
+    }else if (computerSelection === 'rock') {
+        playerScore++;
+        console.log('You win, congratulations');
     } 
     else {
         computerScore++;
-        return 'You lose, better luck next time';
+        console.log('You lose, better luck next time');
     }
+        }
+        
+
+        
+        if (computerScore === 5) {
+    alert('GAME OVER, You lose');
+} else if (playerScore === 5) {
+    alert('You win');
 }
 }
-
-//Loop for 5 rounds and keep score
-for (let i=0; i<5; i++) {
-computerSelection = computerSelFunc();
-userSelec();
-console.log('Computer chose: ' + computerSelection);
-console.log('Player chose:  ' + playerSelection);
-console.log(playRound(playerSelection, computerSelection));
-console.log('your score: ' + playerscore);
-console.log('Computer score: ' + computerScore);
 }
 
+return game();
+return playerScore;
+        return computerScore;
+        const results = document.querySelector('#results');
+        const presults = document.createElement('div');
+        presults.textContent = ('Player score is ' + playerScore);
+        results.appendChild(presults);
+        const cresults = document.createElement('div');
+        cresults.textContent= ('Computer score is ' + computerScore);
+        results.appendChild(cresults);
 
-
+});
+});
 
 
     </script>
